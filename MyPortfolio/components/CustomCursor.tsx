@@ -43,7 +43,7 @@ export const CustomCursor: React.FC = () => {
   }, [cursorX, cursorY]);
 
   return (
-    <>
+    <div className="hidden md:block">
       <motion.div
         className="fixed top-0 left-0 w-8 h-8 rounded-full border border-white/60 pointer-events-none z-[9999999] shadow-[0_0_15px_rgba(255,255,255,0.4)]"
         style={{
@@ -65,6 +65,6 @@ export const CustomCursor: React.FC = () => {
           scale: isHovering ? 0 : 1,
         }}
       />
-    </>
+    </div>
   );
 };

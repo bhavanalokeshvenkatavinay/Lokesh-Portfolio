@@ -36,39 +36,39 @@ export const Education: React.FC = () => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: idx * 0.1 }}
-            className="group relative pl-12 md:pl-0"
+            className="group relative pl-8 md:pl-0"
           >
             <div className="md:grid md:grid-cols-4 gap-8">
               <div className="mb-4 md:mb-0">
-                <div className="text-violet-500 font-bold tracking-widest uppercase text-sm mb-1 flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
+                <div className="text-violet-500 font-bold tracking-widest uppercase text-xs sm:text-sm mb-1 flex items-center gap-2">
+                  <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   {edu.period}
                 </div>
-                <div className="text-white/40 text-xs font-bold uppercase flex items-center gap-1.5 mt-1">
-                  <MapPin className="w-3.5 h-3.5" />
+                <div className="text-white/40 text-[10px] sm:text-xs font-bold uppercase flex items-center gap-1.5 mt-1">
+                  <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   {edu.location}
                 </div>
               </div>
 
-              <div className="md:col-span-3 relative pb-12">
+              <div className="md:col-span-3 relative pb-8 md:pb-12">
                 {/* Visual Timeline Marker */}
-                <div className="absolute left-[-44px] md:left-[-40px] top-1 w-8 h-8 rounded-full border-2 border-white/10 glass flex items-center justify-center z-10 group-hover:border-violet-500/50 transition-colors">
-                  <GraduationCap className="w-4 h-4 text-white/30 group-hover:text-violet-500 transition-colors" />
+                <div className="absolute left-[-28px] md:left-[-40px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white/10 glass flex items-center justify-center z-10 group-hover:border-violet-500/50 transition-colors">
+                  <GraduationCap className="w-3 h-3 sm:w-4 sm:h-4 text-white/30 group-hover:text-violet-500 transition-colors" />
                 </div>
                 {idx !== EDUCATION_DATA.length - 1 && (
-                  <div className="absolute left-[-29px] md:left-[-25px] top-10 bottom-[-10px] w-[2px] bg-white/5 group-hover:bg-violet-500/20 transition-colors" />
+                  <div className="absolute left-[-19px] md:left-[-25px] top-8 md:top-10 bottom-[-10px] w-[2px] bg-white/5 group-hover:bg-violet-500/20 transition-colors" />
                 )}
 
-                <div className="glass p-6 md:p-8 rounded-3xl border border-white/5 hover:border-violet-500/30 transition-all duration-300 bg-black/40 backdrop-blur-xl relative overflow-hidden">
-                  <h3 className="text-2xl font-bold mb-2 group-hover:text-violet-400 transition-colors">{edu.degree}</h3>
-                  <p className="text-base text-violet-300 font-medium mb-1">{edu.branch}</p>
-                  <p className="text-white/60 text-sm font-semibold mb-4">{edu.institution}</p>
-                  <p className="text-white/50 text-sm leading-relaxed mb-6">
+                <div className="glass p-5 sm:p-6 md:p-8 rounded-3xl border border-white/5 hover:border-violet-500/30 transition-all duration-300 bg-black/40 backdrop-blur-xl relative overflow-hidden">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-violet-400 transition-colors">{edu.degree}</h3>
+                  <p className="text-sm sm:text-base text-violet-300 font-medium mb-1">{edu.branch}</p>
+                  <p className="text-white/60 text-xs sm:text-sm font-semibold mb-4">{edu.institution}</p>
+                  <p className="text-white/50 text-xs sm:text-sm leading-relaxed mb-6">
                     {edu.details}
                   </p>
                   
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-violet-500/10 text-violet-400 font-bold rounded-xl border border-violet-500/20 text-sm">
-                    <Award className="w-4 h-4" />
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 bg-violet-500/10 text-violet-400 font-bold rounded-xl border border-violet-500/20 text-xs sm:text-sm">
+                    <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     {edu.gpa}
                   </div>
                 </div>

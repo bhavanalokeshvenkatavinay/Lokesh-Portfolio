@@ -48,7 +48,7 @@ const CERTIFICATES = [
     title: "Individual Internships",
     issuer: "Organisations",
     date: "-",
-    link: "https://bhavanalokeshvenkatavinay.github.io/Interships-Certificates/"
+    link: "https://bhavanalokeshvenkatavinay.github.io/Postman-Certificates/"
   },
   {
     id: 6,
@@ -63,45 +63,64 @@ const CERTIFICATES = [
 export const Certificates: React.FC = () => {
   return (
     <SectionWrapper id="certificates" title="Recognition">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         {CERTIFICATES.map((cert, idx) => (
           <motion.div
             key={cert.id}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: idx * 0.1 }}
-            className="group glass rounded-2xl p-4 hover:border-violet-500/40 transition-all"
+            className="group glass rounded-2xl p-4 hover:border-violet-500/40 transition-all flex flex-col justify-between"
           >
-            <div className="relative aspect-video rounded-xl overflow-hidden mb-6">
-              <img
-                src={cert.image}
-                alt={cert.title}
-                className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-              />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-sm">
-                {cert.link && (
-                  <a
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-white text-black rounded-full shadow-xl hover:bg-violet-500 hover:text-white transition-colors"
-                  >
-                    <Eye className="w-5 h-5" />
-                  </a>
-                )}
+            <div>
+              <div className="relative aspect-video rounded-xl overflow-hidden mb-4 sm:mb-6">
+                <img
+                  src={cert.image}
+                  alt={cert.title}
+                  className="w-full h-full object-cover opacity-80 sm:opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-sm hidden sm:flex">
+                  {cert.link && (
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white text-black rounded-full shadow-xl hover:bg-violet-500 hover:text-white transition-colors cursor-pointer"
+                      aria-label={`View ${cert.title}`}
+                    >
+                      <Eye className="w-5 h-5" />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <div className="px-1 pb-2">
+                <div className="flex items-center gap-2 text-violet-400 mb-2">
+                  <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span className="text-[10px] font-black uppercase tracking-widest">{cert.issuer}</span>
+                </div>
+                <h3 className="text-base sm:text-lg font-bold group-hover:text-violet-300 transition-colors">
+                  {cert.title}
+                </h3>
+                <p className="text-white/40 text-xs mt-1">{cert.date}</p>
               </div>
             </div>
 
-            <div className="px-2 pb-2">
-              <div className="flex items-center gap-2 text-violet-500 mb-2">
-                <Award className="w-4 h-4" />
-                <span className="text-[10px] font-black uppercase tracking-widest">{cert.issuer}</span>
+            {/* Mobile View Certificate Link (Visible on small screens) */}
+            {cert.link && (
+              <div className="mt-3 pt-3 border-t border-white/10 flex sm:hidden justify-between items-center">
+                <span className="text-[11px] font-bold text-violet-400">View Certificate</span>
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 bg-violet-600/30 border border-violet-500/30 rounded-lg text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  View
+                </a>
               </div>
-              <h3 className="text-lg font-bold group-hover:text-white transition-colors">
-                {cert.title}
-              </h3>
-              <p className="text-white/40 text-xs mt-1">{cert.date}</p>
-            </div>
+            )}
           </motion.div>
         ))}
       </div>

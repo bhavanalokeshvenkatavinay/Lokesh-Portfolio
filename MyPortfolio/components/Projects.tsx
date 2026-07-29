@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 export const Projects: React.FC = () => {
   return (
     <SectionWrapper id="projects" title="Works">
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         {PROJECTS.map((project, idx) => (
           <motion.div
             key={project.id}
@@ -20,7 +20,7 @@ export const Projects: React.FC = () => {
             className="group"
           >
             <div className="overflow-hidden h-full flex flex-col relative rounded-2xl glass border border-white/10 group-hover:border-violet-500/50 group-hover:shadow-[0_0_30px_rgba(139,92,246,0.25)] transition-all duration-500">
-              <div className="relative aspect-[2/1] md:aspect-[16/10] overflow-hidden">
+              <div className="relative aspect-[16/9] sm:aspect-[16/10] overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -28,14 +28,14 @@ export const Projects: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-40 transition-opacity duration-500" />
 
-                <div className="absolute top-4 right-4 flex gap-2 z-10">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-black/60 backdrop-blur-md rounded-full text-white hover:bg-violet-600 transition-colors shadow-lg">
-                    <ExternalLink className="w-4 h-4" />
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex gap-2 z-10">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-2 sm:p-2.5 bg-black/60 backdrop-blur-md rounded-full text-white hover:bg-violet-600 transition-colors shadow-lg cursor-pointer">
+                    <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </a>
                 </div>
               </div>
 
-              <div className="p-4 md:p-8 flex-1 flex flex-col">
+              <div className="p-5 sm:p-6 md:p-8 flex-1 flex flex-col">
                 <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
                   {project.tags.map(tag => (
                     <span key={tag} className="text-[9px] md:text-[10px] uppercase tracking-widest font-bold px-2.5 py-1 border border-white/10 rounded-full text-white/50 bg-white/5">
@@ -43,10 +43,10 @@ export const Projects: React.FC = () => {
                     </span>
                   ))}
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3 group-hover:text-violet-400 transition-colors">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-3 group-hover:text-violet-400 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-white/60 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
+                <p className="text-white/60 text-xs sm:text-sm leading-relaxed mb-4 md:mb-6">
                   {project.description}
                 </p>
                 <div className="mt-auto">

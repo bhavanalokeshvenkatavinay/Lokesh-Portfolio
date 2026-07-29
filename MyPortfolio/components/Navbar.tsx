@@ -147,11 +147,11 @@ export const Navbar: React.FC = () => {
         className={`w-full transition-all duration-300 ${scrolled ? 'py-4 glass border-b border-white/10' : 'py-4 md:py-8'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-2xl font-black tracking-tighter cursor-pointer flex-shrink-0"
+            className="text-xl sm:text-2xl font-black tracking-tighter cursor-pointer flex-shrink-0"
             onClick={(e) => scrollToSection(e as any, Section.Home)}
           >
             LV<span className="text-violet-500">VB</span>
@@ -297,11 +297,11 @@ export const Navbar: React.FC = () => {
               {isPlaying ? <Pause size={12} fill="black" /> : <Play size={12} className="ml-[1px]" fill="black" />}
             </button>
             <button
-              className="text-white p-2"
+              className="text-white p-2 focus:outline-none"
               onClick={() => setMobileMenu(!mobileMenu)}
               aria-label="Toggle menu"
             >
-              {mobileMenu ? <X /> : <Menu />}
+              {mobileMenu ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
@@ -313,16 +313,17 @@ export const Navbar: React.FC = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden glass border-b border-white/10 overflow-hidden"
+              className="lg:hidden glass border-b border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl overflow-hidden shadow-2xl"
             >
-              <div className="flex flex-col p-6 gap-4">
+              <div className="flex flex-col p-5 gap-2 max-h-[70vh] overflow-y-auto">
                 {navLinks.map((link) => (
                   <a
                     key={link.id}
                     href={`#${link.id}`}
                     onClick={(e) => scrollToSection(e, link.id)}
-                    className={`text-lg font-bold tracking-widest uppercase py-2 ${active === link.id ? 'text-violet-500' : 'text-white/50'
-                      }`}
+                    className={`text-base font-bold tracking-wider uppercase py-2.5 px-4 rounded-xl transition-all ${
+                      active === link.id ? 'text-violet-400 bg-violet-500/10 border border-violet-500/20' : 'text-white/70 hover:text-white hover:bg-white/5'
+                    }`}
                   >
                     {link.name}
                   </a>
@@ -334,17 +335,18 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Announcement Bar */}
-      <div className="w-full bg-black py-2 overflow-hidden whitespace-nowrap border-t border-white/10">
+      <div className="w-full bg-black/90 py-1.5 sm:py-2 overflow-hidden whitespace-nowrap border-t border-white/10">
         <motion.div
           animate={{ x: ["100%", "-100%"] }}
           transition={{
-            duration: 15, // Slightly faster for better readability flow
+            duration: 15,
             repeat: Infinity,
             ease: "linear"
           }}
-          className="inline-block text-white text-xs md:text-sm font-medium tracking-wide whitespace-nowrap px-4"
+          className="inline-block text-white text-[11px] sm:text-xs md:text-sm font-medium tracking-wide whitespace-nowrap px-4"
         >
-          Building a Cybersecurity platform for students with topics, playgrounds, and hands-on challenges. Launching soon 🚀        </motion.div>
+          Building a Cybersecurity platform for students with topics, playgrounds, and hands-on challenges. Launching soon 🚀
+        </motion.div>
       </div>
 
       {/* HTML5 Audio Element */}

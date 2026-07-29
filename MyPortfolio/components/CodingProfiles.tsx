@@ -87,11 +87,11 @@ const PLATFORMS: CodingPlatform[] = [
 export const CodingProfiles: React.FC = () => {
   return (
     <SectionWrapper id="coding" title="Coding Profiles">
-      <p className="text-white/60 text-sm md:text-base max-w-2xl -mt-8 mb-10">
+      <p className="text-white/60 text-xs sm:text-sm md:text-base max-w-2xl -mt-6 sm:-mt-8 mb-8 sm:mb-10">
         Active competitive programming and cyber security profiles showcasing problem-solving rigor, data structures expertise, and CTF challenges.
       </p>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         {PLATFORMS.map((platform, idx) => (
           <motion.div
             key={platform.name}
@@ -101,45 +101,45 @@ export const CodingProfiles: React.FC = () => {
             whileHover={{ y: -6 }}
             className="group"
           >
-            <div className={`h-full glass rounded-2xl p-6 md:p-7 border ${platform.borderColor} bg-gradient-to-br ${platform.color} ${platform.hoverGlow} transition-all duration-500 flex flex-col justify-between relative overflow-hidden`}>
+            <div className={`h-full glass rounded-2xl p-5 sm:p-6 md:p-7 border ${platform.borderColor} bg-gradient-to-br ${platform.color} ${platform.hoverGlow} transition-all duration-500 flex flex-col justify-between relative overflow-hidden`}>
               
               {/* Background ambient light */}
               <div className="absolute -top-12 -right-12 w-28 h-28 bg-white/5 rounded-full blur-2xl pointer-events-none" />
 
               <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 glass rounded-xl flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 glass rounded-xl flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                     {platform.icon}
                   </div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/70">
+                  <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest px-2.5 sm:px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 max-w-[55%] truncate">
                     {platform.category}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white group-hover:text-violet-300 transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-violet-300 transition-colors">
                   {platform.name}
                 </h3>
-                <p className="text-xs text-white/50 font-mono mt-1 mb-3">
+                <p className="text-[11px] sm:text-xs text-white/50 font-mono mt-1 mb-3 truncate">
                   @{platform.username}
                 </p>
 
-                <p className="text-white/70 text-xs md:text-sm leading-relaxed mb-6">
+                <p className="text-white/70 text-xs md:text-sm leading-relaxed mb-5 sm:mb-6">
                   {platform.role}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                <span className="text-[11px] font-bold text-white/40 group-hover:text-white/80 transition-colors">
+                <span className="text-[11px] font-bold text-white/50 group-hover:text-white/80 transition-colors">
                   View Profile
                 </span>
                 <a
                   href={platform.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 bg-white/10 group-hover:bg-violet-600 rounded-full text-white transition-all duration-300 flex items-center justify-center shadow-lg"
+                  className="p-2 sm:p-2.5 bg-white/10 group-hover:bg-violet-600 rounded-full text-white transition-all duration-300 flex items-center justify-center shadow-lg cursor-pointer"
                   aria-label={`Visit ${platform.name} profile`}
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
               </div>
             </div>

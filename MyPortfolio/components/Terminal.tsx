@@ -295,7 +295,7 @@ export const Terminal: React.FC = () => {
           </div>
 
           {/* Terminal Body */}
-          <div className="flex-1 p-5 relative overflow-hidden flex flex-col min-h-[380px]">
+          <div className="flex-1 p-3 sm:p-5 relative overflow-hidden flex flex-col min-h-[350px] sm:min-h-[380px]">
             {isMatrixMode ? (
               <div className="absolute inset-0 z-10 w-full h-full bg-[#050505] cursor-pointer">
                 <canvas ref={canvasRef} className="w-full h-full" />
@@ -307,11 +307,11 @@ export const Terminal: React.FC = () => {
 
             <div 
               ref={terminalBodyRef}
-              className="flex-1 overflow-y-auto space-y-2 pr-2"
+              className="flex-1 overflow-y-auto space-y-2 pr-1 sm:pr-2 text-xs sm:text-sm"
               style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }}
             >
               {/* ASCII Art formatted inside <pre> for perfect monospace rendering */}
-              <pre className="font-mono leading-tight tracking-normal text-white select-none overflow-x-auto mb-4" style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }}>
+              <pre className="font-mono leading-tight tracking-normal text-violet-400 select-none overflow-x-auto mb-4 text-[8px] sm:text-xs md:text-sm" style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }}>
 {` _         _              _     
 | | ___   | | __  ___  ___| |__  
 | |/ _ \\  | |/ / / _ \\/ __| '_ \\ 
@@ -334,8 +334,8 @@ export const Terminal: React.FC = () => {
 
             {/* Input Prompt (Always visible at bottom when not in Matrix mode) */}
             {!isMatrixMode && (
-              <div className="flex items-center gap-2 mt-4 text-white border-t border-white/5 pt-3" style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }}>
-                <span className="text-white font-bold flex-shrink-0">lokesh@portfolio:~$</span>
+              <div className="flex items-center gap-2 mt-3 sm:mt-4 text-white border-t border-white/5 pt-3 text-xs sm:text-sm" style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }}>
+                <span className="text-white font-bold flex-shrink-0 text-xs sm:text-sm">lokesh@portfolio:~$</span>
                 <div className="flex-1 flex items-center relative">
                   <input
                     ref={inputRef}
@@ -343,7 +343,7 @@ export const Terminal: React.FC = () => {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    className="w-full bg-transparent border-none outline-none focus:ring-0 text-white p-0 font-mono caret-violet-500"
+                    className="w-full bg-transparent border-none outline-none focus:ring-0 text-white p-0 font-mono caret-violet-500 text-xs sm:text-sm"
                     style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }}
                     placeholder=""
                     autoComplete="off"
