@@ -48,7 +48,7 @@ const CERTIFICATES = [
     title: "Individual Internships",
     issuer: "Organisations",
     date: "-",
-    link: "https://bhavanalokeshvenkatavinay.github.io/Postman-Certificates/"
+    link: "https://bhavanalokeshvenkatavinay.github.io/Internships-Certificates/"
   },
   {
     id: 6,
