@@ -1,0 +1,7 @@
+{
+  "name": "Lokesh Venkata Vinay Bhavana 3D Portfolio",
+  "description": "A high-performance, motion-intensive 3D portfolio website featuring advanced cursor effects, parallax 3D cards, and dynamic motion graphics built with React, Framer Motion, and Tailwind CSS.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
