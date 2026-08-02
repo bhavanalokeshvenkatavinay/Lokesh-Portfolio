@@ -7,7 +7,7 @@ export const PROJECTS: Project[] = [
         title: "TicketGuard – AI Scalper & Bot Detection System",
         description: "Developed a full-stack ticket booking platform using Angular, Spring Boot, MySQL, and JWT Authentication. Implemented secure event booking, automatic 5-minute seat reservation with timeout, rule-based fraud detection, and Generative AI (Spring AI & Gemini)-powered risk analysis for identifying suspicious bot behavior. Built an admin dashboard for booking analytics, fraud monitoring, and AI security insights.",
         image: "ticketguard.png",
-        link: "#",
+        link: "https://ticket-guard-pi.vercel.app/login",
         tags: ["Angular", "Spring Boot", "Spring AI", "Gemini API", "MySQL", "JWT"]
     },
     {

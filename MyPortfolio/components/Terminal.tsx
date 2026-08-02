@@ -96,6 +96,7 @@ export const Terminal: React.FC = () => {
         { type: 'output', text: '  1. TicketGuard – AI Scalper & Bot Detection System' },
         { type: 'output', text: '     - Angular, Spring Boot, Spring AI, Google Gemini API, MySQL, JWT' },
         { type: 'output', text: '     - Real-time seat reservation, rule-based risk scoring & GenAI fraud analysis.' },
+        { type: 'output', text: '     - Live Demo: https://ticket-guard-pi.vercel.app/login' },
         { type: 'output', text: '  2. Hybrid Secure File Transfer System' },
         { type: 'output', text: '     - AES/RSA Encryption, Java, Spring Boot, Angular, MySQL' },
         { type: 'output', text: '     - Developed REST APIs for secure file uploads and transfers.' },

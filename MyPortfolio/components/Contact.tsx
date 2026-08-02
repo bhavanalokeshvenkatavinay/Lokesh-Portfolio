@@ -11,12 +11,45 @@ export const Contact: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
 
     setStatus('loading');
     setErrorMessage('');
+
+    const formData = new FormData(formRef.current);
+    const senderName = (formData.get('from_name') || formData.get('name') || 'Visitor') as string;
+    const senderEmail = (formData.get('from_email') || formData.get('email') || '') as string;
+    const messageContent = (formData.get('message') || '') as string;
+
+    const tryFormSubmitFallback = async () => {
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/bhavanalokeshvenkatavinay@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            name: senderName,
+            email: senderEmail,
+            message: messageContent,
+            _subject: `New Portfolio Message from ${senderName}`
+          })
+        });
+
+        if (response.ok) {
+          setStatus('success');
+          setTimeout(() => setStatus('idle'), 3000);
+          if (formRef.current) formRef.current.reset();
+          return true;
+        }
+      } catch (err) {
+        console.error("Fallback submission failed:", err);
+      }
+      return false;
+    };
 
     // 1. Send Admin Notification (To You)
     const sendAdmin = emailjs.sendForm(
@@ -35,17 +68,23 @@ export const Contact: React.FC = () => {
     );
 
     Promise.allSettled([sendAdmin, sendAutoReply])
-      .then((results) => {
+      .then(async (results) => {
         const adminResult = results[0];
         const autoReplyResult = results[1];
 
-        if (adminResult.status === 'rejected') {
-          console.error("Admin Email Failed:", adminResult.reason);
-          setErrorMessage(`Admin Template Error: ${adminResult.reason.text || "Unknown error"}`);
-          setStatus('error');
-        } else if (autoReplyResult.status === 'rejected') {
-          console.error("Auto-Reply Failed:", autoReplyResult.reason);
-          setErrorMessage(`Auto-Reply Error: ${autoReplyResult.reason.text || "Unknown error"}`);
+        if (adminResult.status === 'rejected' || autoReplyResult.status === 'rejected') {
+          console.warn("EmailJS failed, attempting FormSubmit fallback...");
+          const fallbackSuccess = await tryFormSubmitFallback();
+          if (fallbackSuccess) return;
+
+          const failedReason = adminResult.status === 'rejected'
+            ? adminResult.reason
+            : autoReplyResult.status === 'rejected'
+              ? autoReplyResult.reason
+              : null;
+          console.error("EmailJS Error:", failedReason);
+          const errText = (failedReason as any)?.text || (failedReason as any)?.message || (typeof failedReason === 'string' ? failedReason : "Unknown error");
+          setErrorMessage(`Email Service Error: ${errText}`);
           setStatus('error');
         } else {
           // Both succeeded
@@ -139,12 +178,20 @@ export const Contact: React.FC = () => {
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold">Something went wrong</h3>
                 <p className="text-white/60 text-xs sm:text-sm max-w-[80%] break-words">Error: {errorMessage}</p>
-                <button
-                  onClick={() => setStatus('idle')}
-                  className="px-6 py-2 bg-white/10 rounded-full text-xs sm:text-sm font-bold mt-4 hover:bg-white/20 transition-colors"
-                >
-                  Try Again
-                </button>
+                <div className="flex flex-wrap gap-3 justify-center mt-4">
+                  <button
+                    onClick={() => setStatus('idle')}
+                    className="px-5 py-2.5 bg-white/10 rounded-full text-xs sm:text-sm font-bold hover:bg-white/20 transition-colors"
+                  >
+                    Try Again
+                  </button>
+                  <a
+                    href="mailto:bhavanalokeshvenkatavinay@gmail.com"
+                    className="px-5 py-2.5 bg-violet-600 rounded-full text-xs sm:text-sm font-bold hover:bg-violet-500 transition-colors text-white flex items-center gap-2"
+                  >
+                    Send Direct Email
+                  </a>
+                </div>
               </motion.div>
             ) : (
               <motion.form
